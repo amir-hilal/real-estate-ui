@@ -62,3 +62,54 @@
 .header-dropdown__separator {
   border-top: 1px solid #e2e8f0;
 }
+
+.header-dropdown__version-toggle {
+  justify-content: flex-start;
+}
+
+.header-dropdown__chevron {
+  margin-left: auto;
+  font-size: 0.75rem;
+  color: #94a3b8;
+  transition: transform 0.15s;
+}
+
+.header-dropdown__chevron--open {
+  transform: rotate(90deg);
+}
+
+.header-dropdown__version-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 6px 16px 6px 24px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-family: inherit;
+  text-align: left;
+  transition: background 0.12s;
+}
+
+.header-dropdown__version-item:hover {
+  background: #f3f4f6;
+}
+
+.header-dropdown__version-item--selected {
+  background: #f0f9ff;
+}
+
+.header-dropdown__radio {
+  font-size: 0.8rem;
+  color: #2563eb;
+  flex-shrink: 0;
+  width: 14px;
+  text-align: center;
+}
+
+.header-dropdown__version-name {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #1e293b;
+}

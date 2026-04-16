@@ -51,7 +51,7 @@ function parseSSEEvents(raw: string): { eventType: string; data: string }[] {
   return events;
 }
 
-export function useChat(): UseChatReturn {
+export function useChat(promptVersion?: string | null): UseChatReturn {
   const [messages, setMessages] = useState<Message[]>([]);
   const [streamingText, setStreamingText] = useState("");
   const [streamingReplyText, setStreamingReplyText] = useState("");
@@ -97,6 +97,7 @@ export function useChat(): UseChatReturn {
           message: text,
           history,
           accumulated_features: accumulatedRef.current,
+          ...(promptVersion ? { prompt_version: promptVersion } : {}),
         });
 
         const reader = res.body!.getReader();
@@ -214,7 +215,7 @@ export function useChat(): UseChatReturn {
         setStreaming(false);
       }
     },
-    [messages]
+    [messages, promptVersion]
   );
 
   return {

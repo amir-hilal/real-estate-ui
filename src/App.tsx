@@ -1,12 +1,17 @@
-﻿import { useState } from 'react';
+﻿import { useState, useEffect } from 'react';
 import { useChat } from './hooks/useChat';
 import { ChatThread } from './components/ChatThread';
 import { InputBar } from './components/InputBar';
 import { HeaderDropdown } from './components/HeaderDropdown';
 import { InsightsOverlay } from './components/InsightsOverlay';
+import { fetchVersions } from './services/api';
+import type { VersionsResponse } from './types/chat';
 import './App.css';
 
 function App() {
+  const [versions, setVersions] = useState<VersionsResponse | null>(null);
+  const [promptVersion, setPromptVersion] = useState<string | null>(null);
+
   const {
     messages,
     streamingText,
@@ -15,9 +20,23 @@ function App() {
     streaming,
     sendMessage,
     reset,
-  } = useChat();
+  } = useChat(promptVersion);
 
   const [insightsOpen, setInsightsOpen] = useState(false);
+
+  useEffect(() => {
+    fetchVersions()
+      .then((data) => {
+        setVersions(data);
+        setPromptVersion(data.default);
+      })
+      .catch((err) => console.error('Failed to load versions:', err));
+  }, []);
+
+  const handleVersionChange = (version: string) => {
+    setPromptVersion(version);
+    reset();
+  };
 
   return (
     <div className="app">
@@ -30,6 +49,9 @@ function App() {
           <HeaderDropdown
             onReset={reset}
             onViewInsights={() => setInsightsOpen(true)}
+            versions={versions}
+            currentVersion={promptVersion}
+            onVersionChange={handleVersionChange}
           />
         </div>
       </header>

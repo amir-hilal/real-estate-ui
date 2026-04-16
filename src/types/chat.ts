@@ -7,6 +7,15 @@ export interface ChatRequest {
   message: string;
   history: ChatMessage[];
   accumulated_features: Record<string, unknown>;
+  prompt_version?: string;
+}
+
+export interface VersionsResponse {
+  default: string;
+  versions: Array<{
+    version: string;
+    description: string;
+  }>;
 }
 
 export interface Prediction {

@@ -1,4 +1,4 @@
-import type { ChatRequest, InsightsData } from "../types/chat";
+import type { ChatRequest, InsightsData, VersionsResponse } from "../types/chat";
 
 const API_URL = import.meta.env.VITE_API_URL || "http://localhost:8000";
 
@@ -20,6 +20,14 @@ export async function fetchInsights(): Promise<InsightsData> {
   const response = await fetch(`${API_URL}/insights`);
   if (!response.ok) {
     throw new Error(`Insights fetch failed: ${response.status}`);
+  }
+  return response.json();
+}
+
+export async function fetchVersions(): Promise<VersionsResponse> {
+  const response = await fetch(`${API_URL}/versions`);
+  if (!response.ok) {
+    throw new Error(`Versions fetch failed: ${response.status}`);
   }
   return response.json();
 }
