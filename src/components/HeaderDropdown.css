@@ -3,6 +3,9 @@
 }
 
 .header-dropdown__trigger {
+  display: flex;
+  align-items: center;
+  gap: 4px;
   background: none;
   border: 1px solid #e2e8f0;
   border-radius: 8px;
@@ -67,9 +70,13 @@
   justify-content: flex-start;
 }
 
+.header-dropdown__item .material-symbols-rounded {
+  font-size: 20px;
+}
+
 .header-dropdown__chevron {
   margin-left: auto;
-  font-size: 0.75rem;
+  font-size: 18px;
   color: #94a3b8;
   transition: transform 0.15s;
 }
@@ -101,10 +108,10 @@
 }
 
 .header-dropdown__radio {
-  font-size: 0.8rem;
+  font-size: 18px;
   color: #2563eb;
   flex-shrink: 0;
-  width: 14px;
+  width: 20px;
   text-align: center;
 }
 

@@ -100,16 +100,16 @@ export function InsightsOverlay({ isOpen, onClose }: InsightsOverlayProps) {
             <div className="insights-cards">
               <div className="insights-card">
                 <span className="insights-card__value">{formatUsd(perf.test_mae)}</span>
-                <span className="insights-card__label">Prediction Accuracy (MAE)</span>
-                <span className="insights-card__label">Average prediction error</span>
+                <span className="insights-card__label">Typical Estimate Error</span>
+                <span className="insights-card__label">How far off our estimates usually are</span>
               </div>
               <div className="insights-card">
                 <span className="insights-card__value">{(perf.test_r2 * 100).toFixed(1)}%</span>
-                <span className="insights-card__label">Model R² Score</span>
+                <span className="insights-card__label">Prediction Accuracy</span>
               </div>
               <div className="insights-card">
                 <span className="insights-card__value">{perf.improvement_pct}%</span>
-                <span className="insights-card__label">Improvement Over Baseline</span>
+                <span className="insights-card__label">Better Than Guessing</span>
               </div>
               <div className="insights-card">
                 <span className="insights-card__value">${Math.round(stats.median_price_per_sqft)}/sq ft</span>
@@ -123,15 +123,15 @@ export function InsightsOverlay({ isOpen, onClose }: InsightsOverlayProps) {
               <div className="price-distribution">
                 <div className="price-distribution__item">
                   <span className="price-distribution__value">{formatUsd(stats.percentile_25)}</span>
-                  <span className="price-distribution__label">25th Percentile</span>
+                  <span className="price-distribution__label">Budget Range</span>
                 </div>
                 <div className="price-distribution__item">
                   <span className="price-distribution__value">{formatUsd(stats.median)}</span>
-                  <span className="price-distribution__label">Median</span>
+                  <span className="price-distribution__label">Typical Home</span>
                 </div>
                 <div className="price-distribution__item">
                   <span className="price-distribution__value">{formatUsd(stats.percentile_75)}</span>
-                  <span className="price-distribution__label">75th Percentile</span>
+                  <span className="price-distribution__label">Premium Range</span>
                 </div>
               </div>
               <div className="price-bar">
@@ -143,14 +143,14 @@ export function InsightsOverlay({ isOpen, onClose }: InsightsOverlayProps) {
             {/* Section D: Feature Importance */}
             <div className="insights-section">
               <h3 className="insights-section__title">What Drives Property Prices</h3>
-              <p className="insights-section__subtitle">Feature importance from the LightGBM model (gain-based)</p>
+              <p className="insights-section__subtitle">How much each factor influences the final price estimate</p>
               <BarChart items={featureItems} color="#2563eb" />
             </div>
 
             {/* Section E: Neighborhood Comparison */}
             <div className="insights-section">
               <h3 className="insights-section__title">Neighborhood Price Comparison</h3>
-              <p className="insights-section__subtitle">Median sale price by neighborhood</p>
+              <p className="insights-section__subtitle">Typical sale price in each neighborhood</p>
               <BarChart items={neighborhoodItems} color="#059669" />
             </div>
 

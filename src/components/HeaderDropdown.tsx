@@ -39,7 +39,7 @@ export function HeaderDropdown({ onReset, onViewInsights, versions, currentVersi
   return (
     <div className="header-dropdown" ref={ref}>
       <button className="header-dropdown__trigger" onClick={() => setOpen(o => !o)}>
-        ☰ Menu
+        <span className="material-symbols-rounded">menu</span> Menu
       </button>
       {open && (
         <div className="header-dropdown__menu">
@@ -47,13 +47,13 @@ export function HeaderDropdown({ onReset, onViewInsights, versions, currentVersi
             className="header-dropdown__item"
             onClick={() => { setOpen(false); onReset(); }}
           >
-            <span>💬</span> New Conversation
+            <span className="material-symbols-rounded">chat</span> New Conversation
           </button>
           <button
             className="header-dropdown__item"
             onClick={() => { setOpen(false); onViewInsights(); }}
           >
-            <span>📊</span> View Insights
+            <span className="material-symbols-rounded">bar_chart</span> View Insights
           </button>
           {versions && versions.versions.length > 0 && (
             <>
@@ -62,9 +62,9 @@ export function HeaderDropdown({ onReset, onViewInsights, versions, currentVersi
                 className="header-dropdown__item header-dropdown__version-toggle"
                 onClick={() => setVersionsExpanded(e => !e)}
               >
-                <span>🔧</span>
-                <span>Prompt: {currentVersion ?? 'default'}</span>
-                <span className={`header-dropdown__chevron${versionsExpanded ? ' header-dropdown__chevron--open' : ''}`}>▸</span>
+                <span className="material-symbols-rounded">tune</span>
+                <span>Version: {currentVersion ?? 'default'}</span>
+                <span className={`header-dropdown__chevron material-symbols-rounded${versionsExpanded ? ' header-dropdown__chevron--open' : ''}`}>chevron_right</span>
               </button>
               {versionsExpanded && versions.versions.map(v => (
                 <button
@@ -78,8 +78,8 @@ export function HeaderDropdown({ onReset, onViewInsights, versions, currentVersi
                     }
                   }}
                 >
-                  <span className="header-dropdown__radio">
-                    {v.version === currentVersion ? '●' : '○'}
+                  <span className="header-dropdown__radio material-symbols-rounded">
+                    {v.version === currentVersion ? 'radio_button_checked' : 'radio_button_unchecked'}
                   </span>
                   <span className="header-dropdown__version-name">{v.version}</span>
                 </button>
@@ -91,7 +91,7 @@ export function HeaderDropdown({ onReset, onViewInsights, versions, currentVersi
             disabled
             title="Coming soon"
           >
-            <span>🔒</span> Login
+            <span className="material-symbols-rounded">lock</span> Login
           </button>
         </div>
       )}
