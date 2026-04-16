@@ -1,6 +1,9 @@
-﻿import { useChat } from './hooks/useChat';
+﻿import { useState } from 'react';
+import { useChat } from './hooks/useChat';
 import { ChatThread } from './components/ChatThread';
 import { InputBar } from './components/InputBar';
+import { HeaderDropdown } from './components/HeaderDropdown';
+import { InsightsOverlay } from './components/InsightsOverlay';
 import './App.css';
 
 function App() {
@@ -14,6 +17,8 @@ function App() {
     reset,
   } = useChat();
 
+  const [insightsOpen, setInsightsOpen] = useState(false);
+
   return (
     <div className="app">
       <header className="app__header">
@@ -22,9 +27,10 @@ function App() {
             <span className="app__title">Property Price Estimator</span>
             <span className="app__subtitle">Ames, Iowa &middot; ML + AI</span>
           </div>
-          <button className="app__new-btn" onClick={reset}>
-            New conversation
-          </button>
+          <HeaderDropdown
+            onReset={reset}
+            onViewInsights={() => setInsightsOpen(true)}
+          />
         </div>
       </header>
       <ChatThread
@@ -36,6 +42,10 @@ function App() {
         onSend={sendMessage}
       />
       <InputBar onSend={sendMessage} disabled={streaming} />
+      <InsightsOverlay
+        isOpen={insightsOpen}
+        onClose={() => setInsightsOpen(false)}
+      />
     </div>
   );
 }

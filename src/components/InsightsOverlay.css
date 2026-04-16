@@ -1,0 +1,179 @@
+.insights-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.insights-overlay__panel {
+  position: relative;
+  width: 90%;
+  max-width: 800px;
+  max-height: 90vh;
+  background: #ffffff;
+  border-radius: 12px;
+  overflow-y: auto;
+  padding: 32px;
+}
+
+.insights-overlay__close {
+  position: sticky;
+  top: 0;
+  float: right;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #64748b;
+  cursor: pointer;
+  padding: 0 4px;
+  line-height: 1;
+  z-index: 1;
+}
+
+.insights-overlay__close:hover {
+  color: #0f172a;
+}
+
+.insights-overlay__title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0 0 4px;
+}
+
+.insights-overlay__subtitle {
+  font-size: 0.88rem;
+  color: #94a3b8;
+  margin: 0 0 28px;
+}
+
+/* Model Performance Cards */
+.insights-cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-bottom: 32px;
+}
+
+@media (min-width: 640px) {
+  .insights-cards {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.insights-card {
+  background: #f0f9ff;
+  border-radius: 8px;
+  padding: 16px;
+}
+
+.insights-card__value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #0f172a;
+  display: block;
+}
+
+.insights-card__label {
+  font-size: 0.78rem;
+  color: #64748b;
+  margin-top: 4px;
+  display: block;
+}
+
+/* Price Distribution */
+.insights-section {
+  margin-bottom: 32px;
+}
+
+.insights-section__title {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #0f172a;
+  margin: 0 0 4px;
+}
+
+.insights-section__subtitle {
+  font-size: 0.82rem;
+  color: #94a3b8;
+  margin: 0 0 16px;
+}
+
+.price-distribution {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  background: #f9fafb;
+  border-radius: 8px;
+  padding: 16px 24px;
+}
+
+.price-distribution__item {
+  text-align: center;
+}
+
+.price-distribution__value {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #0f172a;
+  display: block;
+}
+
+.price-distribution__label {
+  font-size: 0.75rem;
+  color: #94a3b8;
+  margin-top: 2px;
+  display: block;
+}
+
+/* Price bar visual */
+.price-bar {
+  position: relative;
+  height: 8px;
+  background: #e2e8f0;
+  border-radius: 4px;
+  margin-top: 12px;
+}
+
+.price-bar__fill {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  background: #2563eb;
+  border-radius: 4px;
+  opacity: 0.3;
+}
+
+.price-bar__marker {
+  position: absolute;
+  top: -4px;
+  width: 16px;
+  height: 16px;
+  background: #2563eb;
+  border-radius: 50%;
+  transform: translateX(-50%);
+}
+
+/* Footer */
+.insights-footer {
+  font-size: 0.75rem;
+  color: #94a3b8;
+  margin-top: 12px;
+  line-height: 1.5;
+}
+
+/* Loading / Error */
+.insights-overlay__loading,
+.insights-overlay__error {
+  text-align: center;
+  padding: 48px 0;
+  color: #64748b;
+  font-size: 0.95rem;
+}
+
+.insights-overlay__error {
+  color: #dc2626;
+}
